@@ -1,12 +1,21 @@
-<script setup>
+<script setup lang="ts">
+import type { ComponentType } from '@/types/types.ts'
 import { registerConfig } from '@/config/materials-config.ts'
 
-console.log(registerConfig)
+const emit = defineEmits(['dragstart', 'dragend'])
+
+function dragstart(e: DragEvent, component: ComponentType) {
+  emit('dragstart', component)
+}
+
+function dragend() {
+  emit('dragend')
+}
 </script>
 
 <template>
   <div class="container">
-    <div v-for="item in registerConfig.componentList" :key="item.text" class="es-block" draggable="true">
+    <div v-for="item in registerConfig.componentList" :key="item.text" class="es-block" draggable="true" @dragstart="dragstart($event, item)" @dragend="dragend">
       <span>{{ item.text }}</span>
     </div>
   </div>

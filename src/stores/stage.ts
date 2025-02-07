@@ -1,19 +1,19 @@
 import { defineStore } from 'pinia'
 
 export const useStageStore = defineStore('stage', () => {
-  const width = ref(1920)
-  const height = ref(1080)
+  const width = ref(1856)
+  const height = ref(638)
   const scale = ref(100)
 
-  function changeWidth(val) {
+  function changeWidth(val: number) {
     width.value = val
   }
 
-  function changeHeight(val) {
+  function changeHeight(val: number) {
     height.value = val
   }
 
-  function changeScale(val) {
+  function changeScale(val: number) {
     scale.value = val
   }
 

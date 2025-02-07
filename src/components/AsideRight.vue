@@ -1,9 +1,14 @@
-<script setup>
+<script setup lang="ts">
+import StageStyle from '@/components/StageStyle.vue'
+import { useEditorStore } from '@/stores'
 
+const store = useEditorStore()
 </script>
 
 <template>
-  <div>Aside Right</div>
+  <div>
+    <StageStyle v-if="!store.current" />
+  </div>
 </template>
 
 <style scoped>
