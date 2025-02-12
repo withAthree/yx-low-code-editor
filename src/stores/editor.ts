@@ -28,13 +28,7 @@ export const useEditorStore = defineStore('editor', () => {
   const current = ref<ComponentType | null>()
   const data = ref<EditorDataType>(defaultData)
 
-  function changeCurrent(val: ComponentType) {
-    current.value = val
-  }
-
-  function updateData(val: EditorDataType) {
-    data.value = val
-  }
-
-  return { current, data, changeCurrent, updateData }
+  return { current, data }
+}, {
+  persist: true,
 })

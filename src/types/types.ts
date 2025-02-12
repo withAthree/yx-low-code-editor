@@ -6,12 +6,17 @@ type DragerType = Partial<ExtractPropTypes<typeof DragerProps>>
 export type ComponentType = DragerType & {
   id?: string
   component: string
-  text: string
+  text?: string
   parent_id?: string
   children_id?: string
   status?: string
   width: number
   height: number
+  left?: number
+  top?: number
+  componentType: 'round_rect' | 'line-straight' | 'equipment'
+  linePoints?: string
+  props?: any
   style: CSSProperties
 }
 

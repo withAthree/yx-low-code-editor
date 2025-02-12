@@ -17,7 +17,7 @@ watch(form, (val: any) => {
   immediate: true,
 })
 
-watch(() => store.scale, (val) => {
+watch(() => store.scale, (val: number) => {
   form.scale = val
 })
 </script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStageStore } from '@/stores'
+import { useEditorStore, useStageStore } from '@/stores'
 
 const props = defineProps<{
   width: number
@@ -7,6 +7,7 @@ const props = defineProps<{
 }>()
 
 const store = useStageStore()
+const editorStore = useEditorStore()
 
 // 定义变量
 const baseSize = 999999
@@ -17,7 +18,7 @@ const stageBaseRef = ref<HTMLElement>(null)
 const left = ref(0)
 const top = ref(0)
 
-watch([() => props.width, () => props.height], ([width, height]) => {
+watch([() => props.width, () => props.height], ([width, height]: [number, number]) => {
   left.value = -(baseSize - width) / 2
   top.value = -(baseSize - height) / 2
 })
@@ -54,6 +55,14 @@ function onMouseWheel(event: WheelEvent) {
     store.changeScale(event.deltaY < 0 ? store.scale + 1 : store.scale - 1)
   }
 }
+
+// 失焦
+function onClick() {
+  if (!editorStore.current)
+    return
+  editorStore.current.selected = false
+  editorStore.current = null
+}
 </script>
 
 <template>
@@ -67,6 +76,7 @@ function onMouseWheel(event: WheelEvent) {
         left: `${left}px`,
         top: `${top}px`,
       }"
+      @click.stop="onClick"
       @mousedown="onMouseDown"
       @mousemove="onMouseMove"
       @mouseup="onMouseUp"

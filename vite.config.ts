@@ -26,6 +26,9 @@ export default defineConfig({
         'vue',
         'vue-router',
       ],
+      eslintrc: {
+        enabled: false,
+      },
       dts: 'types/auto-import.d.ts',
       resolvers: [ElementPlusResolver()],
     }),

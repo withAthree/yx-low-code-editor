@@ -7,7 +7,8 @@ const store = useEditorStore()
 
 <template>
   <div>
-    <StageStyle v-if="!store.current" />
+    <StageStyle v-show="!store.current" />
+    <ComponentStyle v-show="store.current" />
   </div>
 </template>
 

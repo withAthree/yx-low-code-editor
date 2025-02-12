@@ -65,7 +65,7 @@ function drop(e: DragEvent) {
           </template>
         </el-auto-resizer>
       </el-main>
-      <el-aside width="269px">
+      <el-aside width="269px" @click.stop @keydown.stop>
         <AsideRight />
       </el-aside>
     </el-container>
